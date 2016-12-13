@@ -1,0 +1,76 @@
+
+
+
+<h2>Manter Aluno</h2>
+
+    <div class="form-group   col-md-6">
+        <label>Matricula</label>
+        <input class="form-control" [(ngModel)]="alunoObject.matricula"   />
+    </div>
+    <div class="form-group   col-md-12">
+        <label>Nome</label>
+        <input class="form-control" [(ngModel)]="alunoObject.nome"   />
+
+    </div>
+    <div class="form-group   col-md-12">
+        <label>Curso</label>
+        <input class="form-control" [(ngModel)]="alunoObject.curso"   />
+
+    </div>
+    <div class="form-group   col-md-12">
+        <label>Professor</label>
+        <input class="form-control" [(ngModel)]="alunoObject.professor"   />
+
+    </div>
+    <div *ngIf="!edit" class="form-group   col-md-12" >
+        <button class="btn btn-primary" (click)="salvar(alunoObject)">Salvar</button>
+    </div>
+    <div *ngIf="edit" class="form-group   col-md-12">
+        <button class="btn btn-primary" (click)="editar(alunoObject, true)">Editar</button>
+    </div>
+
+  
+
+<table class="table table-hover table-striped">
+    <tr>
+        <th>
+            Matricula
+        </th>                 
+        <th>
+            Nome
+        </th>
+        <th>
+            Curso
+        </th>
+        <th>
+            Professor
+        </th>
+        <th>
+
+        </th>
+        <th>
+
+        </th>
+
+    </tr>
+    <tr *ngFor="let aluno of alunos; let i = index">
+        <td>
+            {{aluno.matricula}}
+        </td>
+        <td>
+            {{aluno.nome}}
+        </td>                
+        <td>
+            {{aluno.curso}}
+        </td>
+        <td>
+            {{aluno.professor}}
+        </td>
+        <td>
+            <button class="btn btn-primary" (click)=editar(aluno)>Editar</button>
+        </td>
+        <td>
+            <button class="btn btn-danger" (click)=deletar(i)>Deletar</button>
+        </td>
+    </tr>
+</table>

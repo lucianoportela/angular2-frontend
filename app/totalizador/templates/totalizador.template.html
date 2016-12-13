@@ -1,0 +1,49 @@
+
+
+
+<h2>Manter de Totalizador</h2>
+
+<div class="form-group   col-md-6">
+    <label>Descrição</label>
+    <input class="form-control" [(ngModel)]="totalizadorObject.descricao"   />
+</div>
+<div class="form-group col-md-12">
+    <label>Quantidade</label>
+    <input class="form-control" [(ngModel)]="totalizadorObject.qtde"   />
+</div>
+<div *ngIf="!edit" class="form-group col-md-12">
+    <button class="btn btn-primary" (click)="salvar(totalizadorObject)">Salvar</button>
+</div>
+<div *ngIf="edit" class="form-group col-md-3">
+    <button class="btn btn-primary" (click)="editar(totalizadorObject, true)">Editar</button>
+</div>
+<table class="table table-hover table-striped">
+    <tr>
+        <th>
+            Descrição
+        </th>
+        <th>
+            Quantidade
+        </th>
+        <th>
+
+        </th>
+        <th>
+
+        </th>
+    </tr>
+    <tr *ngFor="let totalizador of totalizadores; let i = index">
+        <td>
+            {{totalizador.descricao}}
+        </td>
+        <td>
+            {{totalizador.qtde}}
+        </td>
+        <td>
+            <button class="btn btn-primary" (click)=editar(totalizador)>Editar</button>
+        </td>
+        <td>
+            <button class="btn btn-danger" (click)=deletar(totalizador._id,i)>Deletar</button>
+        </td>
+    </tr>
+</table>

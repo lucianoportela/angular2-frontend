@@ -14,6 +14,12 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 
+#REMOVENDO PASTAS NAO UTILIZADAS
+node_modules/
+nbproject/*
+app/target/*
+
+
 # Windows shortcuts
 *.lnk
 
