@@ -14,7 +14,7 @@ var Observable_1 = require("rxjs/Observable");
 var CorreiosService = (function () {
     function CorreiosService(http) {
         this.http = http;
-        this.correiosUrl = 'http://viacep.com.br/ws/';
+        this.correiosUrl = 'https://viacep.com.br/ws/';
     }
     CorreiosService.prototype.getCep = function (cep) {
         return this.http.get(this.correiosUrl + cep + "/json")

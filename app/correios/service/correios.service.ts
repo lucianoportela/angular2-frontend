@@ -6,7 +6,7 @@ import { Observable, } from 'rxjs/Observable';
 @Injectable()
 export class CorreiosService {
 
-    correiosUrl = 'http://viacep.com.br/ws/';
+    correiosUrl = 'https://viacep.com.br/ws/';
 
     constructor(private http: Http) { }
 
