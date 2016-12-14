@@ -26,7 +26,7 @@
     // pacotes necessários
     packages: {
       app: {
-        main: './target/config/main.js',
+        main: './config/main.js',
         defaultExtension: 'js'
       },
       rxjs: {
