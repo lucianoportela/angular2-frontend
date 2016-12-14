@@ -3,12 +3,13 @@ import { Usuario } from '../class/usuario';
 import { Perfil } from '../../perfil/class/perfil';
 import { UsuarioService } from '../service/usuario.service';
 import { PerfilService } from '../../perfil/service/perfil.service';
+import { CorreiosService } from '../../correios/service/correios.service';
 
 
 @Component({
     selector: 'usuario',
     templateUrl: 'app/usuario/templates/usuario.template.html',
-    providers: [UsuarioService, PerfilService]
+    providers: [UsuarioService, PerfilService, CorreiosService]
 })
 
 export class UsuarioComponent implements OnInit {
@@ -21,10 +22,29 @@ export class UsuarioComponent implements OnInit {
     errorMessage: any;
     i: number;
 
-    constructor(private usuarioService: UsuarioService, private perfilService: PerfilService) {
-
+    constructor(private usuarioService: UsuarioService,
+        private perfilService: PerfilService,
+        private correiosService: CorreiosService) {
     }
-
+    
+    onChange(cep): void {
+        
+        if (cep != null) {
+            if (cep.toString().length === 8) {
+                this.correiosService.getCep(cep)
+                .subscribe(
+                    response => this.popularLogadouro(response)
+                );
+            }
+        }
+    }
+    
+    popularLogadouro(response){
+        this.usuarioObject.endereco = 
+        " " + response.logradouro + 
+        " " + response.bairro ; 
+    }        
+    
     deletar(id, index): void {
         this.i = index;
         this.usuarioService.deletarUsuario(id)
@@ -66,7 +86,7 @@ export class UsuarioComponent implements OnInit {
                 usuario => this.atualizarFormulario(),
                 error => this.errorMessage = <any>error
                 );
-           
+
         }
 
     }
@@ -88,7 +108,7 @@ export class UsuarioComponent implements OnInit {
         this.perfis = perfis;
         this.usuarioObject.perfil = this.perfis[0];
     }
-    
+
     listarPerfil(): void {
         this.perfilService.getList()
             .subscribe(

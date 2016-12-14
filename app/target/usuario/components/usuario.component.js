@@ -12,13 +12,29 @@ var core_1 = require("@angular/core");
 var usuario_1 = require("../class/usuario");
 var usuario_service_1 = require("../service/usuario.service");
 var perfil_service_1 = require("../../perfil/service/perfil.service");
+var correios_service_1 = require("../../correios/service/correios.service");
 var UsuarioComponent = (function () {
-    function UsuarioComponent(usuarioService, perfilService) {
+    function UsuarioComponent(usuarioService, perfilService, correiosService) {
         this.usuarioService = usuarioService;
         this.perfilService = perfilService;
+        this.correiosService = correiosService;
         this.usuarioObject = new usuario_1.Usuario();
         this.edit = false;
     }
+    UsuarioComponent.prototype.onChange = function (cep) {
+        var _this = this;
+        if (cep != null) {
+            if (cep.toString().length === 8) {
+                this.correiosService.getCep(cep)
+                    .subscribe(function (response) { return _this.popularLogadouro(response); });
+            }
+        }
+    };
+    UsuarioComponent.prototype.popularLogadouro = function (response) {
+        this.usuarioObject.endereco =
+            " " + response.logradouro +
+                " " + response.bairro;
+    };
     UsuarioComponent.prototype.deletar = function (id, index) {
         var _this = this;
         this.i = index;
@@ -85,9 +101,11 @@ UsuarioComponent = __decorate([
     core_1.Component({
         selector: 'usuario',
         templateUrl: 'app/usuario/templates/usuario.template.html',
-        providers: [usuario_service_1.UsuarioService, perfil_service_1.PerfilService]
+        providers: [usuario_service_1.UsuarioService, perfil_service_1.PerfilService, correios_service_1.CorreiosService]
     }),
-    __metadata("design:paramtypes", [usuario_service_1.UsuarioService, perfil_service_1.PerfilService])
+    __metadata("design:paramtypes", [usuario_service_1.UsuarioService,
+        perfil_service_1.PerfilService,
+        correios_service_1.CorreiosService])
 ], UsuarioComponent);
 exports.UsuarioComponent = UsuarioComponent;
 //# sourceMappingURL=usuario.component.js.map

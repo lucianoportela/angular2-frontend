@@ -6,4 +6,6 @@ export class Usuario {
     perfil: {
         nome: string
     };
+    cep:number;
+    endereco:string;
 }

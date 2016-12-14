@@ -12,13 +12,25 @@
     <select class="form-control" [(ngModel)]="usuarioObject.perfil"  >
         <option [ngValue]="p"  *ngFor="let p of perfis">{{p.nome}}</option>
     </select>
-
-
 </div> 
+
 <div class="form-group col-md-12">
     <label>Idade</label>
     <input class="form-control" [(ngModel)]="usuarioObject.idade"   />
 </div>
+<div class="form-group col-md-6">
+    <label>Cep</label>
+    <input type="number" class="form-control" 
+           [(ngModel)]="usuarioObject.cep" (ngModelChange)="onChange($event)"  />
+</div>
+
+<div class="form-group col-md-12">
+    <label>Endereço</label>
+    <input type="text" class="form-control" [(ngModel)]="usuarioObject.endereco"   />
+</div>
+
+
+
 <div *ngIf="!edit" class="form-group col-md-3">
     <button class="btn btn-primary" (click)="salvar(usuarioObject)">Salvar</button>
 </div>
@@ -38,7 +50,10 @@
         </th>
         <th>
             Perfil
-        </th>        
+        </th>  
+        <th>
+            Cep
+        </th>          
         <th>
 
         </th>
@@ -58,7 +73,10 @@
         </td>
         <td>
             {{usuario.perfil.nome}}
-        </td>        
+        </td>     
+        <td>
+            {{usuario.cep}}
+        </td>           
         <td>
             <button class="btn btn-primary" (click)=editar(usuario)>Editar</button>
         </td>
