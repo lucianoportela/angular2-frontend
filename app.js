@@ -5,6 +5,6 @@ const options = {
   index: "index.html"
 };
 
-app.use(express.static(path.join(__dirname, '/'), options));
+app.use(express.static(path.join(__dirname, '/target'), options));
 
 module.exports = app;
