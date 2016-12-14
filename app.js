@@ -5,10 +5,6 @@ const options = {
   index: "index.html"
 };
 
-//app.use(express.static(path.join(__dirname, '/target'), options));
-
-app.use(function(req, res){
-res.sendFile(__dirname + "/target/index.html");
-});
+app.use(express.static(path.join(__dirname, '/'), options));
 
 module.exports = app;
