@@ -12,6 +12,15 @@ import { UsuarioService } from '../service/usuario.service';
 export class UsuarioComponent implements OnInit  {
     usuarios: Usuario[];
     usuarioObject = new Usuario();
+    
+    
+       perfis = [
+        {nome:"Admin"},
+        {nome:"Oreia"},
+        {nome:"Professor"}
+    ]; 
+    
+    
     edit = false;
     errorMessage: any;
     i:number;
@@ -39,6 +48,7 @@ export class UsuarioComponent implements OnInit  {
     popularLista(usuario: Usuario) {
         this.usuarios.push(usuario);
         this.usuarioObject = new Usuario();
+        this.usuarioObject.perfil = {nome:""};
     }
     editar(usuario: Usuario, persistir = false): void {
 
@@ -51,6 +61,7 @@ export class UsuarioComponent implements OnInit  {
                 usuario => this.atualizarFormulario(),
                 error => this.errorMessage = <any>error
                 );
+                 this.usuarioObject.perfil = {nome:""};
         }
 
     }

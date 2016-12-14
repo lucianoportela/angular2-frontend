@@ -1,7 +1,9 @@
 export class Usuario {
-  __v:number;  
-  _id: string;
-  idade:number;
-  nome: string;
-  
+    __v: number;
+    _id: string;
+    idade: number;
+    nome: string;
+    perfil: {
+        nome: string
+    };
 }
