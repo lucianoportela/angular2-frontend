@@ -14,7 +14,7 @@ var Observable_1 = require("rxjs/Observable");
 var UsuarioService = (function () {
     function UsuarioService(http) {
         this.http = http;
-        this.usuarioUrl = 'https://cursoangularjs2restful.herokuapp.com/usuario';
+        this.usuarioUrl = 'https://node-angular2-restful.herokuapp.com/usuario';
     }
     UsuarioService.prototype.getListUsuario = function () {
         return this.http.get(this.usuarioUrl)

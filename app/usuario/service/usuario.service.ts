@@ -10,7 +10,7 @@ import { Observable } from 'rxjs/Observable';
 export class UsuarioService {
 
 
-    private usuarioUrl = 'https://cursoangularjs2restful.herokuapp.com/usuario';
+    private usuarioUrl = 'https://node-angular2-restful.herokuapp.com/usuario';
 
     constructor(private http: Http) { }
 

@@ -3,9 +3,10 @@ export class Usuario {
     _id: string;
     idade: number;
     nome: string;
+    cep: number;
+    endereco: string;    
     perfil: {
         nome: string
     };
-    cep:number;
-    endereco:string;
+
 }
