@@ -12,7 +12,7 @@
     <select [(ngModel)]="usuarioObject.perfil"  >
         <option [ngValue]="p"  *ngFor="let p of perfis">{{p.nome}}</option>
     </select>
-</select>
+
 
 </div> 
 <div class="form-group col-md-12">
@@ -37,6 +37,9 @@
             Idade
         </th>
         <th>
+            Perfil
+        </th>        
+        <th>
 
         </th>
         <th>
@@ -53,6 +56,9 @@
         <td>
             {{usuario.idade}}
         </td>
+        <td>
+            {{usuario.perfil.nome}}
+        </td>        
         <td>
             <button class="btn btn-primary" (click)=editar(usuario)>Editar</button>
         </td>

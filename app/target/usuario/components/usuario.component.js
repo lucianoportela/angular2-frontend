@@ -17,7 +17,8 @@ var UsuarioComponent = (function () {
         this.usuarioObject = new usuario_1.Usuario();
         this.perfis = [
             { nome: "Admin" },
-            { nome: "Gerente" }
+            { nome: "Oreia" },
+            { nome: "Professor" }
         ];
         this.edit = false;
     }

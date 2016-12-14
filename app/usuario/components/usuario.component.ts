@@ -14,9 +14,10 @@ export class UsuarioComponent implements OnInit {
     usuarioObject = new Usuario();
 
 
-    perfis = [
+   perfis = [
         { nome: "Admin" },
-        { nome: "Gerente" }
+        { nome: "Oreia" },
+        { nome: "Professor" }
     ];
 
 
