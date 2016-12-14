@@ -15,6 +15,9 @@ export class PerfilComponent implements OnInit {
     perfis: Perfil[];
     edit = false;
     
+    errorMessage: any;
+    i: number;
+    
     constructor(private perfilService: PerfilService) {
         
     }
@@ -36,10 +39,12 @@ export class PerfilComponent implements OnInit {
          this.edit = false;
       }
     }    
-    
-    
+
     listar(): void {
-        this.perfilService.getListPerfil().then(perfis => this.perfis=perfis)
+        this.perfilService.getList()
+            .subscribe(
+            perfis => this.perfis = perfis,
+            error => this.errorMessage = <any>error);
     }
     
     ngOnInit(): void{

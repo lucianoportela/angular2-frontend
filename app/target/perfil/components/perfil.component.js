@@ -35,7 +35,8 @@ var PerfilComponent = (function () {
     };
     PerfilComponent.prototype.listar = function () {
         var _this = this;
-        this.perfilService.getListPerfil().then(function (perfis) { return _this.perfis = perfis; });
+        this.perfilService.getList()
+            .subscribe(function (perfis) { return _this.perfis = perfis; }, function (error) { return _this.errorMessage = error; });
     };
     PerfilComponent.prototype.ngOnInit = function () {
         this.listar();
