@@ -11,10 +11,9 @@ Instale o NodeJS e o NPM através do site https://nodejs.org.
 
 ```bash
 #Instalando bibliotecas:
-
+$ npm i
 
 #Rodando o projeto:
-
 $ npm start
 ```
   
