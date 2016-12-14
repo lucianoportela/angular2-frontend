@@ -17,8 +17,7 @@ var UsuarioComponent = (function () {
         this.usuarioObject = new usuario_1.Usuario();
         this.perfis = [
             { nome: "Admin" },
-            { nome: "Oreia" },
-            { nome: "Professor" }
+            { nome: "Gerente" }
         ];
         this.edit = false;
     }
@@ -39,12 +38,17 @@ var UsuarioComponent = (function () {
     UsuarioComponent.prototype.popularLista = function (usuario) {
         this.usuarios.push(usuario);
         this.usuarioObject = new usuario_1.Usuario();
-        this.usuarioObject.perfil = { nome: "" };
+        this.usuarioObject.perfil = this.perfis[0];
     };
     UsuarioComponent.prototype.editar = function (usuario, persistir) {
         var _this = this;
         if (persistir === void 0) { persistir = false; }
         this.edit = true;
+        for (var p in this.perfis) {
+            if (usuario.perfil.nome === this.perfis[p].nome) {
+                usuario.perfil = this.perfis[p];
+            }
+        }
         this.usuarioObject = usuario;
         if (persistir) {
             if (!usuario.nome) {
@@ -52,7 +56,7 @@ var UsuarioComponent = (function () {
             }
             this.usuarioService.salvarUsuario(usuario)
                 .subscribe(function (usuario) { return _this.atualizarFormulario(); }, function (error) { return _this.errorMessage = error; });
-            this.usuarioObject.perfil = { nome: "" };
+            this.usuarioObject.perfil = this.perfis[0];
         }
     };
     UsuarioComponent.prototype.atualizarFormulario = function () {
@@ -66,6 +70,7 @@ var UsuarioComponent = (function () {
     };
     UsuarioComponent.prototype.ngOnInit = function () {
         this.listar();
+        this.usuarioObject.perfil = this.perfis[2];
     };
     return UsuarioComponent;
 }());
