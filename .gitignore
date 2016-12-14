@@ -17,7 +17,7 @@ $RECYCLE.BIN/
 #REMOVENDO PASTAS NAO UTILIZADAS
 node_modules/
 nbproject/*
-app/target/*
+
 
 
 # Windows shortcuts
