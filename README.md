@@ -5,7 +5,7 @@
 *  Adaptado por Luciano Portela.  
 
 * AngularJS - Frontend é um CRUD que consome os servivos REST do projeto
-* Acesso ao outro projeto RestFul  [Projeto GitHub RestFul](hhttps://github.com/lucianoportela/node-angular2-restful) 
+* Acesso ao outro projeto RestFul  [Projeto GitHub RestFul](https://github.com/lucianoportela/node-angular2-restful) 
 
 
 ***
