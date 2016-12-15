@@ -21,30 +21,21 @@ export class PerfilComponent implements OnInit {
     constructor(private perfilService: PerfilService) {
         
     }
-    
-    deletar(index): void {
-        this.perfis.splice(index, 1);
-    }
 
-    salvar(perfil): void {
-       this.perfis.push(perfil);
-       this.perfilObject = new Perfil();
-       
-    }
-
-    editar(perfil, persistir = false) : void{
-      this.edit = true;
-      this.perfilObject = perfil;
-      if(persistir){
-         this.perfilObject = new Perfil();
-         this.edit = false;
-      }
-    }    
 
     listar(): void {
-        this.perfilService.getList()
+        this.perfilService.fetchAll()
             .subscribe(
             perfis => this.perfis = perfis,
+            error => this.errorMessage = <any>error);
+    }
+    
+        
+    deletar(id, index): void {
+        this.i = index;
+            this.perfilService.deletar(id)
+            .subscribe(
+            success => this.perfis.splice(this.i, 1),
             error => this.errorMessage = <any>error);
     }
     

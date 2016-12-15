@@ -7,9 +7,6 @@
 <table class="table table-hover table-striped">
     <tr>
         <th>
-            Id
-        </th>
-        <th>
             Nome
         </th>
         <th>
@@ -29,9 +26,6 @@
         </th>
     </tr>
     <tr *ngFor="let usuario of usuarios; let i = index">
-        <td>
-            {{usuario._id}}
-        </td>
         <td>
             {{usuario.nome}}
         </td>

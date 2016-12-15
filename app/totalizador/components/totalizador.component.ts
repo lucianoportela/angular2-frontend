@@ -19,6 +19,14 @@ export class TotalizadorComponent implements OnInit  {
     constructor(private totalizadorService: TotalizadorService) {
     }    
     
+    listar(): void {
+        this.totalizadorService.fetchAll()
+            .subscribe(
+            totalizadores => this.totalizadores = totalizadores,
+            error => this.errorMessage = <any>error);
+
+    }    
+    
      deletar(id, index): void {
            this.i = index;
             this.totalizadorService.deletar(id)
@@ -27,46 +35,7 @@ export class TotalizadorComponent implements OnInit  {
             error => this.errorMessage = <any>error);
     }
 
-    salvar(totalizador): void {
-        if (!totalizador.descricao) { return; }
-        this.totalizadorService.salvar(totalizador)
-            .subscribe(
-            totalizador => this.popularLista(totalizador),
-            error => this.errorMessage = <any>error
-            );
-    }
-
-    popularLista(totalizador: Totalizador) {
-        this.totalizadores.push(totalizador);
-        this.totalizadorObject = new Totalizador();
-    }
-    editar(totalizador: Totalizador, persistir = false): void {
-
-        this.edit = true;
-        this.totalizadorObject = totalizador;
-        if (persistir) {
-            if (!totalizador.descricao) { return; }
-            this.totalizadorService.salvar(totalizador)
-                .subscribe(
-                totalizador => this.atualizarFormulario(),
-                error => this.errorMessage = <any>error
-                );
-        }
-
-    }
-    atualizarFormulario(): void {
-        this.totalizadorObject = new Totalizador();
-        this.edit = false;
-    }
-    
-    
-    listar(): void {
-        this.totalizadorService.getList()
-            .subscribe(
-            totalizadores => this.totalizadores = totalizadores,
-            error => this.errorMessage = <any>error);
-
-    }
+  
    
     
     ngOnInit(): void {

@@ -17,26 +17,16 @@ var PerfilComponent = (function () {
         this.perfilObject = new perfil_1.Perfil();
         this.edit = false;
     }
-    PerfilComponent.prototype.deletar = function (index) {
-        this.perfis.splice(index, 1);
-    };
-    PerfilComponent.prototype.salvar = function (perfil) {
-        this.perfis.push(perfil);
-        this.perfilObject = new perfil_1.Perfil();
-    };
-    PerfilComponent.prototype.editar = function (perfil, persistir) {
-        if (persistir === void 0) { persistir = false; }
-        this.edit = true;
-        this.perfilObject = perfil;
-        if (persistir) {
-            this.perfilObject = new perfil_1.Perfil();
-            this.edit = false;
-        }
-    };
     PerfilComponent.prototype.listar = function () {
         var _this = this;
-        this.perfilService.getList()
+        this.perfilService.fetchAll()
             .subscribe(function (perfis) { return _this.perfis = perfis; }, function (error) { return _this.errorMessage = error; });
+    };
+    PerfilComponent.prototype.deletar = function (id, index) {
+        var _this = this;
+        this.i = index;
+        this.perfilService.deletar(id)
+            .subscribe(function (success) { return _this.perfis.splice(_this.i, 1); }, function (error) { return _this.errorMessage = error; });
     };
     PerfilComponent.prototype.ngOnInit = function () {
         this.listar();

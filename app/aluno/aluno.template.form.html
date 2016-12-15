@@ -1,0 +1,33 @@
+<h2>Manter Aluno</h2>
+
+    <div class="form-group   col-md-6">
+        <label>Matricula</label>
+        <input class="form-control" [(ngModel)]="alunoObject.matricula"   />
+    </div>
+    <div class="form-group   col-md-12">
+        <label>Nome</label>
+        <input class="form-control" [(ngModel)]="alunoObject.nome"   />
+
+    </div>
+
+    <div class="form-group   col-md-12">
+        <label>Idade</label>
+        <input class="form-control" [(ngModel)]="alunoObject.idade"   />
+
+    </div>
+    <div class="form-group   col-md-6">
+        <label>Turma</label>
+        <input class="form-control" [(ngModel)]="alunoObject.turma"   />
+    </div>
+    <div class="form-group   col-md-6">
+        <label>Turno</label>
+        <input class="form-control" [(ngModel)]="alunoObject.turno"   />
+    </div>
+  
+<div class="form-group col-md-1">
+    <a class="btn btn-default" routerLink="/aluno">Voltar</a>
+</div>
+
+<div  class="form-group col-md-1">
+    <button class="btn btn-primary" (click)="salvar(alunoObject)">Salvar</button>
+</div>

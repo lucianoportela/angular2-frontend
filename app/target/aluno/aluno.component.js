@@ -17,25 +17,16 @@ var AlunoComponent = (function () {
         this.alunoObject = new aluno_1.Aluno();
         this.edit = false;
     }
-    AlunoComponent.prototype.deletar = function (index) {
-        this.alunos.splice(index, 1);
-    };
-    AlunoComponent.prototype.salvar = function (aluno) {
-        this.alunos.push(aluno);
-        this.alunoObject = new aluno_1.Aluno();
-    };
-    AlunoComponent.prototype.editar = function (aluno, persistir) {
-        if (persistir === void 0) { persistir = false; }
-        this.edit = true;
-        this.alunoObject = aluno;
-        if (persistir) {
-            this.alunoObject = new aluno_1.Aluno();
-            this.edit = false;
-        }
-    };
     AlunoComponent.prototype.listar = function () {
         var _this = this;
-        this.alunoService.getListAluno().then(function (alunos) { return _this.alunos = alunos; });
+        this.alunoService.fetchAll()
+            .subscribe(function (alunos) { return _this.alunos = alunos; }, function (error) { return _this.errorMessage = error; });
+    };
+    AlunoComponent.prototype.deletar = function (id, index) {
+        var _this = this;
+        this.i = index;
+        this.alunoService.deletar(id)
+            .subscribe(function (success) { return _this.alunos.splice(_this.i, 1); }, function (error) { return _this.errorMessage = error; });
     };
     AlunoComponent.prototype.ngOnInit = function () {
         this.listar();

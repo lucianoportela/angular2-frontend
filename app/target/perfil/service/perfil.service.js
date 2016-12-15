@@ -14,12 +14,16 @@ var Observable_1 = require("rxjs/Observable");
 var PerfilService = (function () {
     function PerfilService(http) {
         this.http = http;
-        this.url = 'https://cursoangularjs2restful.herokuapp.com/perfil';
+        this.url = 'https://node-angular2-restful.herokuapp.com/perfil';
     }
-    PerfilService.prototype.getList = function () {
+    PerfilService.prototype.fetchAll = function () {
         return this.http.get(this.url)
             .map(function (res) { return res.json(); })
-            .do(function (data) { return console.log('getList:', data); }) // debug
+            .catch(this.handleError);
+    };
+    PerfilService.prototype.get = function (id) {
+        return this.http.get(this.url + "/" + id)
+            .map(function (res) { return res.json(); })
             .catch(this.handleError);
     };
     PerfilService.prototype.deletar = function (id) {

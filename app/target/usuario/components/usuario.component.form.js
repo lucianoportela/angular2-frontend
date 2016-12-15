@@ -40,7 +40,7 @@ var UsuarioComponentForm = (function () {
     };
     UsuarioComponentForm.prototype.listarPerfil = function () {
         var _this = this;
-        this.perfilService.getList()
+        this.perfilService.fetchAll()
             .subscribe(function (response) { return _this.popularPerfis(response); }, function (error) { return _this.errorMessage = error; });
     };
     UsuarioComponentForm.prototype.popularPerfis = function (perfis) {

@@ -1,35 +1,5 @@
-
-
-
-<h2>Manter Aluno</h2>
-
-    <div class="form-group   col-md-6">
-        <label>Matricula</label>
-        <input class="form-control" [(ngModel)]="alunoObject.matricula"   />
-    </div>
-    <div class="form-group   col-md-12">
-        <label>Nome</label>
-        <input class="form-control" [(ngModel)]="alunoObject.nome"   />
-
-    </div>
-    <div class="form-group   col-md-12">
-        <label>Curso</label>
-        <input class="form-control" [(ngModel)]="alunoObject.curso"   />
-
-    </div>
-    <div class="form-group   col-md-12">
-        <label>Professor</label>
-        <input class="form-control" [(ngModel)]="alunoObject.professor"   />
-
-    </div>
-    <div *ngIf="!edit" class="form-group   col-md-12" >
-        <button class="btn btn-primary" (click)="salvar(alunoObject)">Salvar</button>
-    </div>
-    <div *ngIf="edit" class="form-group   col-md-12">
-        <button class="btn btn-primary" (click)="editar(alunoObject, true)">Editar</button>
-    </div>
-
-  
+<h2>Lista de alunos</h2>
+<p><a class="btn btn-primary" routerLink="/aluno-add">Novo Aluno</a>  </p>
 
 <table class="table table-hover table-striped">
     <tr>
@@ -40,10 +10,13 @@
             Nome
         </th>
         <th>
-            Curso
+            Idade
         </th>
         <th>
-            Professor
+            Turma
+        </th>
+        <th>
+            Turno
         </th>
         <th>
 
@@ -61,16 +34,19 @@
             {{aluno.nome}}
         </td>                
         <td>
-            {{aluno.curso}}
+            {{aluno.idade}}
         </td>
         <td>
-            {{aluno.professor}}
+            {{aluno.turma}}
         </td>
         <td>
-            <button class="btn btn-primary" (click)=editar(aluno)>Editar</button>
+            {{aluno.turno}}
+        </td>        
+        <td>
+            <a class="btn btn-primary" routerLink="/aluno-edit/{{aluno._id}}">Editar</a>
         </td>
         <td>
-            <button class="btn btn-danger" (click)=deletar(i)>Deletar</button>
+            <button class="btn btn-danger" (click)=deletar(aluno._id,i)>Deletar</button>
         </td>
     </tr>
 </table>

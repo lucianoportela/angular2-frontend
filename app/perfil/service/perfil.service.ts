@@ -10,14 +10,20 @@ import { Observable } from 'rxjs/Observable';
 export class PerfilService {
 
 
-    private url = 'https://cursoangularjs2restful.herokuapp.com/perfil';
+    private url = 'https://node-angular2-restful.herokuapp.com/perfil';
 
     constructor(private http: Http) { }
 
-    getList(): Observable<Perfil[]> {
+    
+   fetchAll(): Observable<Perfil[]> {
         return this.http.get(this.url)
             .map(res => res.json())
-            .do(data => console.log('getList:', data))  // debug
+            .catch(this.handleError);
+    }
+
+    get(id: string): Observable<Perfil> {
+        return this.http.get(this.url + "/" + id)
+            .map(res => res.json())
             .catch(this.handleError);
     }
 

@@ -14,18 +14,25 @@ export class TotalizadorService {
 
     constructor(private http: Http) { }
 
-    getList(): Observable<Totalizador[]> {
+    fetchAll(): Observable<Totalizador[]> {
+
         return this.http.get(this.totalizadorUrl)
             .map(res => res.json())
-            .do(data => console.log('getList:', data))  // debug
             .catch(this.handleError);
     }
+
+    get(id: string): Observable<Totalizador> {
+        return this.http.get(this.totalizadorUrl + "/" + id)
+            .map(res => res.json())
+            .catch(this.handleError);
+    }
+
 
     deletar(id: string): Observable<Response> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
         return this.http.delete(this.totalizadorUrl + "/" + id, options)
-         .do(data => console.log('deletar:', data));  // debug;
+            .do(data => console.log('deletar:', data));  // debug;
     }
 
     public salvar(totalizador: Totalizador): Observable<Totalizador> {

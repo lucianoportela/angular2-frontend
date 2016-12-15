@@ -12,42 +12,38 @@ export class AlunoComponent implements OnInit {
     alunoObject = new Aluno();
     alunos: Aluno[];
     edit = false;
-    
-    constructor(private alunoService: AlunoService){
-        
-    }
-    
-     deletar(index): void {
-        this.alunos.splice(index, 1);
+    errorMessage: any;
+    i: number;
+
+    constructor(private alunoService: AlunoService) {
+
     }
 
-    salvar(aluno): void {
-       this.alunos.push(aluno);
-       this.alunoObject = new Aluno();
-    }
-
-    editar(aluno, persistir = false) : void{
-      this.edit = true;
-      this.alunoObject = aluno;
-      if(persistir){
-         this.alunoObject = new Aluno();
-         this.edit = false;
-      }
-    }
-    
-    
-    
     listar(): void {
-        this.alunoService.getListAluno().then(alunos=>this.alunos= alunos);
+        this.alunoService.fetchAll()
+            .subscribe(
+            alunos => this.alunos = alunos,
+            error => this.errorMessage = <any>error);
+
     }
-    
+
+
+    deletar(id, index): void {
+        this.i = index;
+        this.alunoService.deletar(id)
+            .subscribe(
+            success => this.alunos.splice(this.i, 1),
+            error => this.errorMessage = <any>error);
+    }
+
+
     ngOnInit(): void {
         this.listar();
     }
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
 }

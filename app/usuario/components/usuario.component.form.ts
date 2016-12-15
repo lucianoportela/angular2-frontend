@@ -56,7 +56,7 @@ export class UsuarioComponentForm implements OnInit {
 
 
     listarPerfil(): void {
-        this.perfilService.getList()
+        this.perfilService.fetchAll()
             .subscribe(
             response => this.popularPerfis(response),
             error => this.errorMessage = <any>error);

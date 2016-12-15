@@ -16,10 +16,14 @@ var TotalizadorService = (function () {
         this.http = http;
         this.totalizadorUrl = 'https://node-angular2-restful.herokuapp.com/totalizador';
     }
-    TotalizadorService.prototype.getList = function () {
+    TotalizadorService.prototype.fetchAll = function () {
         return this.http.get(this.totalizadorUrl)
             .map(function (res) { return res.json(); })
-            .do(function (data) { return console.log('getList:', data); }) // debug
+            .catch(this.handleError);
+    };
+    TotalizadorService.prototype.get = function (id) {
+        return this.http.get(this.totalizadorUrl + "/" + id)
+            .map(function (res) { return res.json(); })
             .catch(this.handleError);
     };
     TotalizadorService.prototype.deletar = function (id) {

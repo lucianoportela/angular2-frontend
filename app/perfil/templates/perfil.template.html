@@ -1,53 +1,37 @@
+<h2>Lista de perfis</h2>
+<p><a class="btn btn-primary" routerLink="/perfil-add">Novo Perfil</a>  </p>
+
+<table class="table table-hover table-striped">
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Nome
+        </th>
+        <th>
+            Idade
+        </th>
+        <th>
+
+        </th>
+        <th>
+
+        </th>
+    </tr>
+    <tr *ngFor="let perfil of perfis; let i = index">
+
+        <td>
+            {{perfil.nome}}
+        </td>
+        <td>
+            <a class="btn btn-primary" routerLink="/perfil-edit/{{perfil._id}}">Editar</a>
+        </td>
+        <td>
+            <button class="btn btn-danger" (click)=deletar(perfil._id,i)>Deletar</button>
+        </td>
+    </tr>
+</table>
 
 
 
- <h2>Manter Perfil</h2>
-          <div class="form-group col-md-4">
-            <label>Nome</label>
-            <input class="form-control" [(ngModel)]="perfilObject.nome"   />
-          </div>
-          <div *ngIf="!edit" class="form-group col-md-3">
-            <button class="btn btn-primary" (click)="salvar(perfilObject)">Salvar</button>
-          </div>
-          <div *ngIf="edit" class="form-group col-md-3">
-            <button class="btn btn-primary" (click)="editar(perfilObject, true)">Editar</button>
-          </div>
-          <table class="table table-hover table-striped">
-             <tr>
-                <th>
-                    Id
-                </th>
-                <th>
-                    Nome
-                </th>
-                <th>
-                    Idade
-                </th>
-                <th>
-
-                </th>
-                <th>
-
-                </th>
-             </tr>
-             <tr *ngFor="let perfil of perfis; let i = index">
-     
-                <td>
-                     {{perfil.nome}}
-                </td>
-                <td>
-                    <button class="btn btn-primary" (click)=editar(perfil)>Editar</button>
-                </td>
-                <td>
-                    <button class="btn btn-danger" (click)=deletar(i)>Deletar</button>
-                </td>
-             </tr>
-          </table>
- 
- 
- 
-     <div *ngIf="!edit" class="form-group   col-md-12" >
-        <button class="btn btn-primary" (click)="salvar(alunoObject)">Salvar</button>
-    </div>
-    <div *ngIf="edit" class="form-group   col-md-12">
-        <button class="btn btn-primary" (click)="editar(alunoObject, true)">Editar</button>

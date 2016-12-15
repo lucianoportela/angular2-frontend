@@ -15,10 +15,13 @@ var forms_1 = require("@angular/forms");
 var app_component_1 = require("./app.component");
 var home_component_1 = require("../home/components/home.component");
 var totalizador_component_1 = require("../totalizador/components/totalizador.component");
+var totalizador_component_form_1 = require("../totalizador/components/totalizador.component.form");
 var usuario_component_1 = require("../usuario/components/usuario.component");
 var usuario_component_form_1 = require("../usuario/components/usuario.component.form");
 var perfil_component_1 = require("../perfil/components/perfil.component");
+var perfil_componente_form_1 = require("../perfil/components/perfil.componente.form");
 var aluno_component_1 = require("../aluno/aluno.component");
+var aluno_component_form_1 = require("../aluno/aluno.component.form");
 var turma_component_1 = require("../turma/components/turma.component");
 var routes_1 = require("../routes/routes");
 var http_1 = require("@angular/http");
@@ -37,11 +40,14 @@ AppModule = __decorate([
         //Adicionar essa linha
         declarations: [app_component_1.AppComponent,
             totalizador_component_1.TotalizadorComponent,
+            totalizador_component_form_1.TotalizadorComponentForm,
             usuario_component_1.UsuarioComponent,
             usuario_component_form_1.UsuarioComponentForm,
             home_component_1.HomeComponent,
             perfil_component_1.PerfilComponent,
+            perfil_componente_form_1.PerfilComponentForm,
             aluno_component_1.AlunoComponent,
+            aluno_component_form_1.AlunoComponentForm,
             turma_component_1.TurmaComponent
         ],
         //Adicionar essa linha

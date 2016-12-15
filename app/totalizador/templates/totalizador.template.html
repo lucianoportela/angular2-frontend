@@ -1,22 +1,6 @@
+<h2>Lista de Totalizadores</h2>
+<p><a class="btn btn-primary" routerLink="/totalizador-add">Novo Usuário</a>  </p>
 
-
-
-<h2>Manter de Totalizador</h2>
-
-<div class="form-group   col-md-6">
-    <label>Descrição</label>
-    <input class="form-control" [(ngModel)]="totalizadorObject.descricao"   />
-</div>
-<div class="form-group col-md-12">
-    <label>Quantidade</label>
-    <input class="form-control" [(ngModel)]="totalizadorObject.qtde"   />
-</div>
-<div *ngIf="!edit" class="form-group col-md-12">
-    <button class="btn btn-primary" (click)="salvar(totalizadorObject)">Salvar</button>
-</div>
-<div *ngIf="edit" class="form-group col-md-3">
-    <button class="btn btn-primary" (click)="editar(totalizadorObject, true)">Editar</button>
-</div>
 <table class="table table-hover table-striped">
     <tr>
         <th>
@@ -40,7 +24,8 @@
             {{totalizador.qtde}}
         </td>
         <td>
-            <button class="btn btn-primary" (click)=editar(totalizador)>Editar</button>
+            <a class="btn btn-primary" routerLink="/totalizador-edit/{{totalizador._id}}">Editar</a>
+            
         </td>
         <td>
             <button class="btn btn-danger" (click)=deletar(totalizador._id,i)>Deletar</button>
