@@ -29,6 +29,7 @@ export class PerfilComponent implements OnInit {
     salvar(perfil): void {
        this.perfis.push(perfil);
        this.perfilObject = new Perfil();
+       
     }
 
     editar(perfil, persistir = false) : void{

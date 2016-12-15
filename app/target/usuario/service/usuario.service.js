@@ -16,10 +16,14 @@ var UsuarioService = (function () {
         this.http = http;
         this.usuarioUrl = 'https://node-angular2-restful.herokuapp.com/usuario';
     }
-    UsuarioService.prototype.getListUsuario = function () {
+    UsuarioService.prototype.fetchAll = function () {
         return this.http.get(this.usuarioUrl)
             .map(function (res) { return res.json(); })
-            .do(function (data) { return console.log('getListUsuario:', data); }) // debug
+            .catch(this.handleError);
+    };
+    UsuarioService.prototype.get = function (id) {
+        return this.http.get(this.usuarioUrl + "/" + id)
+            .map(function (res) { return res.json(); })
             .catch(this.handleError);
     };
     UsuarioService.prototype.deletarUsuario = function (id) {

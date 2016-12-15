@@ -43,3 +43,11 @@
                 </td>
              </tr>
           </table>
+ 
+ 
+ 
+     <div *ngIf="!edit" class="form-group   col-md-12" >
+        <button class="btn btn-primary" (click)="salvar(alunoObject)">Salvar</button>
+    </div>
+    <div *ngIf="edit" class="form-group   col-md-12">
+        <button class="btn btn-primary" (click)="editar(alunoObject, true)">Editar</button>

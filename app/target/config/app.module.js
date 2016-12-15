@@ -16,6 +16,7 @@ var app_component_1 = require("./app.component");
 var home_component_1 = require("../home/components/home.component");
 var totalizador_component_1 = require("../totalizador/components/totalizador.component");
 var usuario_component_1 = require("../usuario/components/usuario.component");
+var usuario_component_form_1 = require("../usuario/components/usuario.component.form");
 var perfil_component_1 = require("../perfil/components/perfil.component");
 var aluno_component_1 = require("../aluno/aluno.component");
 var turma_component_1 = require("../turma/components/turma.component");
@@ -37,6 +38,7 @@ AppModule = __decorate([
         declarations: [app_component_1.AppComponent,
             totalizador_component_1.TotalizadorComponent,
             usuario_component_1.UsuarioComponent,
+            usuario_component_form_1.UsuarioComponentForm,
             home_component_1.HomeComponent,
             perfil_component_1.PerfilComponent,
             aluno_component_1.AlunoComponent,

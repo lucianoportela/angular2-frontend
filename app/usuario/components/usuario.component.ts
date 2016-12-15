@@ -26,24 +26,17 @@ export class UsuarioComponent implements OnInit {
         private perfilService: PerfilService,
         private correiosService: CorreiosService) {
     }
+
     
-    onChange(cep): void {
-        
-        if (cep != null) {
-            if (cep.toString().length === 8) {
-                this.correiosService.getCep(cep)
-                .subscribe(
-                    response => this.popularLogadouro(response)
-                );
-            }
-        }
+
+    listar(): void {
+        this.usuarioService.fetchAll()
+            .subscribe(
+            usuarios => this.usuarios = usuarios,
+            error => this.errorMessage = <any>error);
+
     }
     
-    popularLogadouro(response){
-        this.usuarioObject.endereco = 
-        " " + response.logradouro + 
-        " " + response.bairro ; 
-    }        
     
     deletar(id, index): void {
         this.i = index;
@@ -53,20 +46,17 @@ export class UsuarioComponent implements OnInit {
             error => this.errorMessage = <any>error);
     }
 
-    salvar(usuario): void {
-        if (!usuario.nome) { return; }
-        this.usuarioService.salvarUsuario(usuario)
-            .subscribe(
-            usuario => this.popularLista(usuario),
-            error => this.errorMessage = <any>error
-            );
+    ngOnInit(): void {
+        this.listar();
+   
     }
 
-    popularLista(usuario: Usuario) {
-        this.usuarios.push(usuario);
-        this.usuarioObject = new Usuario();
-        this.usuarioObject.perfil = this.perfis[0];
-    }
+
+
+}
+
+
+/*
     editar(usuario: Usuario, persistir = false): void {
 
         this.edit = true;
@@ -88,41 +78,14 @@ export class UsuarioComponent implements OnInit {
                 );
 
         }
+        
+        
+          
 
-    }
     atualizarFormulario(): void {
         this.usuarioObject = new Usuario();
         this.edit = false;
         this.usuarioObject.perfil = this.perfis[0];
     }
 
-
-    listar(): void {
-        this.usuarioService.getListUsuario()
-            .subscribe(
-            usuarios => this.usuarios = usuarios,
-            error => this.errorMessage = <any>error);
-
-    }
-    popularPerfis(perfis): void {
-        this.perfis = perfis;
-        this.usuarioObject.perfil = this.perfis[0];
-    }
-
-    listarPerfil(): void {
-        this.perfilService.getList()
-            .subscribe(
-            response => this.popularPerfis(response),
-            error => this.errorMessage = <any>error);
-
-    }
-
-
-    ngOnInit(): void {
-        this.listar();
-        this.listarPerfil();
-    }
-
-
-
-}
+    }*/

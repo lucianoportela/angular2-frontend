@@ -34,13 +34,13 @@ var PerfilService = (function () {
         if (!perfil._id) {
             return this.http.post(this.url, perfil, options)
                 .map(function (res) { return res.json(); })
-                .do(function (data) { return console.log('Novo usuário:', data); }) // debug
+                .do(function (data) { return console.log('Novo perfil:', data); }) // debug
                 .catch(this.handleError);
         }
         else {
             return this.http.put(this.url + "/" + perfil._id, perfil, options)
                 .map(function (res) { return res.json(); })
-                .do(function (data) { return console.log('Altera usuário:', data); }) // debug
+                .do(function (data) { return console.log('Altera perfil:', data); }) // debug
                 .catch(this.handleError);
         }
     };

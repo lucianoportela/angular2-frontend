@@ -21,19 +21,10 @@ var UsuarioComponent = (function () {
         this.usuarioObject = new usuario_1.Usuario();
         this.edit = false;
     }
-    UsuarioComponent.prototype.onChange = function (cep) {
+    UsuarioComponent.prototype.listar = function () {
         var _this = this;
-        if (cep != null) {
-            if (cep.toString().length === 8) {
-                this.correiosService.getCep(cep)
-                    .subscribe(function (response) { return _this.popularLogadouro(response); });
-            }
-        }
-    };
-    UsuarioComponent.prototype.popularLogadouro = function (response) {
-        this.usuarioObject.endereco =
-            " " + response.logradouro +
-                " " + response.bairro;
+        this.usuarioService.fetchAll()
+            .subscribe(function (usuarios) { return _this.usuarios = usuarios; }, function (error) { return _this.errorMessage = error; });
     };
     UsuarioComponent.prototype.deletar = function (id, index) {
         var _this = this;
@@ -41,59 +32,8 @@ var UsuarioComponent = (function () {
         this.usuarioService.deletarUsuario(id)
             .subscribe(function (success) { return _this.usuarios.splice(_this.i, 1); }, function (error) { return _this.errorMessage = error; });
     };
-    UsuarioComponent.prototype.salvar = function (usuario) {
-        var _this = this;
-        if (!usuario.nome) {
-            return;
-        }
-        this.usuarioService.salvarUsuario(usuario)
-            .subscribe(function (usuario) { return _this.popularLista(usuario); }, function (error) { return _this.errorMessage = error; });
-    };
-    UsuarioComponent.prototype.popularLista = function (usuario) {
-        this.usuarios.push(usuario);
-        this.usuarioObject = new usuario_1.Usuario();
-        this.usuarioObject.perfil = this.perfis[0];
-    };
-    UsuarioComponent.prototype.editar = function (usuario, persistir) {
-        var _this = this;
-        if (persistir === void 0) { persistir = false; }
-        this.edit = true;
-        for (var p in this.perfis) {
-            if (usuario.perfil.nome === this.perfis[p].nome) {
-                usuario.perfil = this.perfis[p];
-            }
-        }
-        this.usuarioObject = usuario;
-        if (persistir) {
-            if (!usuario.nome) {
-                return;
-            }
-            this.usuarioService.salvarUsuario(usuario)
-                .subscribe(function (usuario) { return _this.atualizarFormulario(); }, function (error) { return _this.errorMessage = error; });
-        }
-    };
-    UsuarioComponent.prototype.atualizarFormulario = function () {
-        this.usuarioObject = new usuario_1.Usuario();
-        this.edit = false;
-        this.usuarioObject.perfil = this.perfis[0];
-    };
-    UsuarioComponent.prototype.listar = function () {
-        var _this = this;
-        this.usuarioService.getListUsuario()
-            .subscribe(function (usuarios) { return _this.usuarios = usuarios; }, function (error) { return _this.errorMessage = error; });
-    };
-    UsuarioComponent.prototype.popularPerfis = function (perfis) {
-        this.perfis = perfis;
-        this.usuarioObject.perfil = this.perfis[0];
-    };
-    UsuarioComponent.prototype.listarPerfil = function () {
-        var _this = this;
-        this.perfilService.getList()
-            .subscribe(function (response) { return _this.popularPerfis(response); }, function (error) { return _this.errorMessage = error; });
-    };
     UsuarioComponent.prototype.ngOnInit = function () {
         this.listar();
-        this.listarPerfil();
     };
     return UsuarioComponent;
 }());
@@ -108,4 +48,37 @@ UsuarioComponent = __decorate([
         correios_service_1.CorreiosService])
 ], UsuarioComponent);
 exports.UsuarioComponent = UsuarioComponent;
+/*
+    editar(usuario: Usuario, persistir = false): void {
+
+        this.edit = true;
+
+        for (var p in this.perfis) {
+            if (usuario.perfil.nome === this.perfis[p].nome) {
+                usuario.perfil = this.perfis[p];
+            }
+        }
+
+        this.usuarioObject = usuario;
+
+        if (persistir) {
+            if (!usuario.nome) { return; }
+            this.usuarioService.salvarUsuario(usuario)
+                .subscribe(
+                usuario => this.atualizarFormulario(),
+                error => this.errorMessage = <any>error
+                );
+
+        }
+        
+        
+          
+
+    atualizarFormulario(): void {
+        this.usuarioObject = new Usuario();
+        this.edit = false;
+        this.usuarioObject.perfil = this.perfis[0];
+    }
+
+    }*/ 
 //# sourceMappingURL=usuario.component.js.map

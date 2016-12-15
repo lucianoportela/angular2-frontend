@@ -31,16 +31,15 @@ export class PerfilService {
     public salvar(perfil: Perfil): Observable<Perfil> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
-
         if (!perfil._id) {
             return this.http.post(this.url, perfil, options)
                 .map(res => res.json())
-                .do(data => console.log('Novo usuário:', data))  // debug
+                .do(data => console.log('Novo perfil:', data))  // debug
                 .catch(this.handleError);
         } else {
             return this.http.put(this.url + "/" + perfil._id, perfil, options)
                 .map(res => res.json())
-                .do(data => console.log('Altera usuário:', data))  // debug
+                .do(data => console.log('Altera perfil:', data))  // debug
                 .catch(this.handleError);
         }
 

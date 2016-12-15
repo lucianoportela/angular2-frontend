@@ -13,14 +13,20 @@ export class UsuarioService {
     private usuarioUrl = 'https://node-angular2-restful.herokuapp.com/usuario';
 
     constructor(private http: Http) { }
+    
+   fetchAll(): Observable<Usuario[]> {
 
-    getListUsuario(): Observable<Usuario[]> {
         return this.http.get(this.usuarioUrl)
             .map(res => res.json())
-            .do(data => console.log('getListUsuario:', data))  // debug
             .catch(this.handleError);
     }
 
+    get(id: string): Observable<Usuario> {
+        return this.http.get(this.usuarioUrl + "/" + id)
+            .map(res => res.json())
+            .catch(this.handleError);
+    }
+    
     deletarUsuario(id: string): Observable<Response> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
@@ -58,25 +64,5 @@ export class UsuarioService {
         console.error(errMsg);
         return Observable.throw(errMsg);
     }
-
-    /*
-        usuarios = [];
-        getListUsuario(): Promise<Usuario[]> {
-            this.usuarios = [{ id: 11, nome: 'João', idade: 20 },
-            { id: 12, nome: 'Maria', idade: 24 },
-            { id: 13, nome: 'Joana', idade: 29 },
-            { id: 14, nome: 'José', idade: 60 },
-            { id: 15, nome: 'Magneta', idade: 89 },
-            { id: 16, nome: 'RubberMan', idade: 21 },
-            { id: 17, nome: 'Dynama', idade: 29 },
-            { id: 18, nome: 'Dr IQ', idade: 26 },
-            { id: 19, nome: 'Nataniel', idade: 25 },
-            { id: 20, nome: 'Jéssica', idade: 23 }];
-    
-            return Promise.resolve(this.usuarios);
-        }
-    */
-
-
 
 }
