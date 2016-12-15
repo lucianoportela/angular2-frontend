@@ -1,22 +1,40 @@
-﻿# AngularJS - Frontend
+#[AngularJS - Frontend](https://angular2-frontend.herokuapp.com/)
 
-Seja bem vindo ao projeto AngularJS 2 - FrontEnd!
- 
+####AngularJS - Frontend
 
-# Instale os programas:
-Instale o NodeJS e o NPM através do site https://nodejs.org.
+*  Adaptado por Luciano Portela.  
+
+* AngularJS - Frontend é um CRUD que consome os servivos REST do projeto
+* Acesso ao outro projeto RestFul  [Projeto GitHub RestFul](hhttps://github.com/lucianoportela/node-angular2-restful) 
 
 
-#Desenvolvimento
+***
 
-```bash
-#Instalando bibliotecas:
-$ npm i
+####AngularJS - Frontend é construido com as bibliotecas :
 
-#Rodando o projeto:
-$ npm start
+* [Node.js](http://nodejs.org/) - Application Server
+* [AngularJs](https://angularjs.org/) - Angularjs
+
+***
+
+ [Página do Projeto](https://angular2-frontend.herokuapp.com/) 
+
+***
+
+####Instalação & Configuração
+Assumimos que voce tem o node.js & npm instalados.
 ```
-  
-   
-# Testar a aplicação
-Entre no site https://angular2-frontend.herokuapp.com/
+git clone https://github.com/lucianoportela/angular2-frontend.git angular2-frontend
+cd angular2-frontend
+npm i
+npm start
+```
+
+
+####Contribuição
+---
+
+Node-Angular2-Restful é um projeto open source. Sinta-se livre para contribuir!
+
+####Testar a Aplicação
+--- Acesso: https://angular2-frontend.herokuapp.com/
