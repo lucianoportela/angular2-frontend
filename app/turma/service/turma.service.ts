@@ -14,13 +14,18 @@ export class TurmaService {
 
     constructor(private http: Http) { }
 
-    getList(): Observable<Turma[]> {
+    fetchAll(): Observable<Turma[]> {
+
         return this.http.get(this.url)
             .map(res => res.json())
-            .do(data => console.log('getList:', data))  // debug
             .catch(this.handleError);
     }
 
+    get(id: string): Observable<Turma> {
+        return this.http.get(this.url + "/" + id)
+            .map(res => res.json())
+            .catch(this.handleError);
+    }
     deletar(id: string): Observable<Response> {
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });

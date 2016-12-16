@@ -17,6 +17,7 @@ import { AlunoComponent } from '../aluno/aluno.component';
 import { AlunoComponentForm } from '../aluno/aluno.component.form';
 
 import { TurmaComponent } from '../turma/components/turma.component';
+import { TurmaComponentForm } from '../turma/components/turma.component.form';
 
 
 //Configurações da rota
@@ -46,6 +47,8 @@ export const routes: Routes = [
 
     
     { path: 'turma', component: TurmaComponent },
+    { path: 'turma-add', component: TurmaComponentForm },
+    { path: 'turma-edit/:id', component: TurmaComponentForm },
 
 ];
 

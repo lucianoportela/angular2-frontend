@@ -23,6 +23,7 @@ var perfil_componente_form_1 = require("../perfil/components/perfil.componente.f
 var aluno_component_1 = require("../aluno/aluno.component");
 var aluno_component_form_1 = require("../aluno/aluno.component.form");
 var turma_component_1 = require("../turma/components/turma.component");
+var turma_component_form_1 = require("../turma/components/turma.component.form");
 var routes_1 = require("../routes/routes");
 var http_1 = require("@angular/http");
 var AppModule = (function () {
@@ -48,7 +49,8 @@ AppModule = __decorate([
             perfil_componente_form_1.PerfilComponentForm,
             aluno_component_1.AlunoComponent,
             aluno_component_form_1.AlunoComponentForm,
-            turma_component_1.TurmaComponent
+            turma_component_1.TurmaComponent,
+            turma_component_form_1.TurmaComponentForm
         ],
         //Adicionar essa linha
         bootstrap: [app_component_1.AppComponent]

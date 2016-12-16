@@ -1,42 +1,8 @@
+<h2>Lista de Turmas</h2>
+<p><a class="btn btn-primary" routerLink="/turma-add">Nova Turma</a>  </p>
 
 
 
- <h2>Manter de Turma</h2>
-
-          <div class="form-group   col-md-6">
-            <label>Descrição</label>
-            <input class="form-control" [(ngModel)]="turmaObject.descricao"   />
-          </div>
-          <div class="form-group col-md-12">
-            <label>Periodo</label>
-            <input class="form-control" [(ngModel)]="turmaObject.periodo"   />
-          </div>
-           <div class="form-group col-md-12">
-            <label>Sala</label>
-            <input class="form-control" [(ngModel)]="turmaObject.sala"   />
-          </div>
-           <div class="form-group col-md-12">
-            <label>Horário</label>
-            <input class="form-control" [(ngModel)]="turmaObject.horario"   />
-          </div>
-           <div class="form-group col-md-12">
-            <label>Sigla</label>
-            <input class="form-control" [(ngModel)]="turmaObject.sigla"   />
-          </div>
-           <div class="form-group col-md-12">
-            <label>Capacidade</label>
-            <input class="form-control" [(ngModel)]="turmaObject.capacidade"   />
-          </div>
- 
- 
- 
- 
-          <div *ngIf="!edit" class="form-group col-md-12">
-            <button class="btn btn-primary" (click)="salvar(turmaObject)">Salvar</button>
-          </div>
-          <div *ngIf="edit" class="form-group col-md-3">
-            <button class="btn btn-primary" (click)="editar(turmaObject, true)">Editar</button>
-          </div>
           <table class="table table-hover table-striped">
              <tr>
                 <th>
@@ -84,7 +50,7 @@
                     {{turma.capacidade}}
                 </td>                
                 <td>
-                    <button class="btn btn-primary" (click)=editar(turma)>Editar</button>
+                   <a class="btn btn-primary" routerLink="/turma-edit/{{turma._id}}">Editar</a>
                 </td>
                 <td>
                     <button class="btn btn-danger" (click)=deletar(turma._id,i)>Deletar</button>

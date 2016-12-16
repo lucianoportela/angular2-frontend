@@ -12,50 +12,21 @@ var core_1 = require("@angular/core");
 var turma_1 = require("../class/turma");
 var turma_service_1 = require("../service/turma.service");
 var TurmaComponent = (function () {
-    function TurmaComponent(totalizadorService) {
-        this.totalizadorService = totalizadorService;
+    function TurmaComponent(turmaService) {
+        this.turmaService = turmaService;
         this.turmaObject = new turma_1.Turma();
         this.edit = false;
     }
+    TurmaComponent.prototype.listar = function () {
+        var _this = this;
+        this.turmaService.fetchAll()
+            .subscribe(function (turmas) { return _this.turmas = turmas; }, function (error) { return _this.errorMessage = error; });
+    };
     TurmaComponent.prototype.deletar = function (id, index) {
         var _this = this;
         this.i = index;
-        this.totalizadorService.deletar(id)
+        this.turmaService.deletar(id)
             .subscribe(function (success) { return _this.turmas.splice(_this.i, 1); }, function (error) { return _this.errorMessage = error; });
-    };
-    TurmaComponent.prototype.salvar = function (totalizador) {
-        var _this = this;
-        if (!totalizador.descricao) {
-            return;
-        }
-        this.totalizadorService.salvar(totalizador)
-            .subscribe(function (totalizador) { return _this.popularLista(totalizador); }, function (error) { return _this.errorMessage = error; });
-    };
-    TurmaComponent.prototype.popularLista = function (totalizador) {
-        this.turmas.push(totalizador);
-        this.turmaObject = new turma_1.Turma();
-    };
-    TurmaComponent.prototype.editar = function (totalizador, persistir) {
-        var _this = this;
-        if (persistir === void 0) { persistir = false; }
-        this.edit = true;
-        this.turmaObject = totalizador;
-        if (persistir) {
-            if (!totalizador.descricao) {
-                return;
-            }
-            this.totalizadorService.salvar(totalizador)
-                .subscribe(function (totalizador) { return _this.atualizarFormulario(); }, function (error) { return _this.errorMessage = error; });
-        }
-    };
-    TurmaComponent.prototype.atualizarFormulario = function () {
-        this.turmaObject = new turma_1.Turma();
-        this.edit = false;
-    };
-    TurmaComponent.prototype.listar = function () {
-        var _this = this;
-        this.totalizadorService.getList()
-            .subscribe(function (turmas) { return _this.turmas = turmas; }, function (error) { return _this.errorMessage = error; });
     };
     TurmaComponent.prototype.ngOnInit = function () {
         this.listar();

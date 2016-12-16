@@ -16,10 +16,14 @@ var TurmaService = (function () {
         this.http = http;
         this.url = 'https://node-angular2-restful.herokuapp.com/turma';
     }
-    TurmaService.prototype.getList = function () {
+    TurmaService.prototype.fetchAll = function () {
         return this.http.get(this.url)
             .map(function (res) { return res.json(); })
-            .do(function (data) { return console.log('getList:', data); }) // debug
+            .catch(this.handleError);
+    };
+    TurmaService.prototype.get = function (id) {
+        return this.http.get(this.url + "/" + id)
+            .map(function (res) { return res.json(); })
             .catch(this.handleError);
     };
     TurmaService.prototype.deletar = function (id) {

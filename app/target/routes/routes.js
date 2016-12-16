@@ -10,6 +10,7 @@ var totalizador_component_form_1 = require("../totalizador/components/totalizado
 var aluno_component_1 = require("../aluno/aluno.component");
 var aluno_component_form_1 = require("../aluno/aluno.component.form");
 var turma_component_1 = require("../turma/components/turma.component");
+var turma_component_form_1 = require("../turma/components/turma.component.form");
 //Configurações da rota
 exports.routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -27,6 +28,8 @@ exports.routes = [
     { path: 'aluno-add', component: aluno_component_form_1.AlunoComponentForm },
     { path: 'aluno-edit/:id', component: aluno_component_form_1.AlunoComponentForm },
     { path: 'turma', component: turma_component_1.TurmaComponent },
+    { path: 'turma-add', component: turma_component_form_1.TurmaComponentForm },
+    { path: 'turma-edit/:id', component: turma_component_form_1.TurmaComponentForm },
 ];
 exports.routing = router_1.RouterModule.forRoot(exports.routes);
 //# sourceMappingURL=routes.js.map

@@ -20,6 +20,7 @@ import { AlunoComponent } from '../aluno/aluno.component';
 import { AlunoComponentForm } from '../aluno/aluno.component.form';
 
 import { TurmaComponent } from '../turma/components/turma.component';
+import { TurmaComponentForm } from '../turma/components/turma.component.form';
 
 
 import { routing } from '../routes/routes';
@@ -43,7 +44,8 @@ import { HttpModule } from '@angular/http';
         PerfilComponentForm,
         AlunoComponent,
         AlunoComponentForm,
-        TurmaComponent
+        TurmaComponent,
+        TurmaComponentForm
         ],
         
     //Adicionar essa linha
